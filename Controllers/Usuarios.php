@@ -2,13 +2,14 @@
 class Usuarios extends Controller{
     public function __construct(){
         session_start();
-        if (empty($_SESSION['activo'])) {
-            header("location: ".base_url);
-        } //validación de seguridad para no entrar sin logearse BLOQUEA LA VALIDACIÓN DE USUARIO INCORRECTO
+
         parent::__construct();
     }
     public function index() 
     {
+        if (empty($_SESSION['activo'])) {
+            header("location: ".base_url);
+        } //validación de seguridad para no entrar sin logearse 
         $model = new UsuariosModel();
         $data['cajas'] = $model->getCajas();
         $this->views->getView($this, "index", $data);
@@ -67,6 +68,7 @@ class Usuarios extends Controller{
         $caja = $_POST['caja'];
         $id = $_POST['id'];
         $hash = hash("SHA256", $clave);
+        //$hashC = hash( "SHA256", $correo); testeo para luego de correo encriptado
         if (empty ($usuario) || empty($nombre) || empty($correo) ||empty($caja)) {
             $msg = "Todos  los campos son obligatorios.";
 
