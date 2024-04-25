@@ -1,13 +1,11 @@
 <?php
-class Views {
-
-    public function getView($controlador, $vista, $data="")  
+class Views{
+    public function getView($ruta, $nombre, $data = "")
     {
-        $controlador = get_class($controlador);  // Obtener el nombre del controlador actual.
-        if ($controlador == "Home") {
-            $vista = "Views/".$vista.".php";
+        if ($ruta == 'Principal') {
+            $vista = 'views/' . $nombre . '.php';
         }else{
-            $vista = "Views/".$controlador."/".$vista.".php";
+            $vista = 'views/'. $ruta. '/' . $nombre . '.php';
         }
         require $vista;
     }

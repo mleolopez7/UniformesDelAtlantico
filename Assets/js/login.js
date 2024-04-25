@@ -21,7 +21,7 @@ function frmLogin(e){
                 //console.log(this.responseText); SIRVE PARA MOSTRAR EL ERROR PERSÉ
                 const res = JSON.parse(this.responseText);
                 if(res == "ok"){
-                    window.location = base_url + "Usuarios";
+                    window.location = base_url + "Administracion/home";
                 }else{
                     document.getElementById("alerta").classList.remove("d-none");
                     document.getElementById("alerta").innerHTML = res;

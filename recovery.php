@@ -31,7 +31,8 @@
                                             <div class ="alert alert-danger text-center d-none" id="alerta" role="alert">
                                             </div>                                      
                                             <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                            <button class="btn btn-primary" type="submit">Recuperar contraseña</button>
+                                            <button class="btn btn-primary" type="button" >Volver al menú principal </button><a href="<?php echo base_url; ?>"> 
+                                            <button class="btn btn-primary" type="submit" >Enviar </button>
                                             </div>           
                                         </form>
                                     </div>

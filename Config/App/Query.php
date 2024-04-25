@@ -6,14 +6,20 @@ class Query extends Conexion{
         $this->con = $this->pdo->conect();        
     }
 
-    public function select(string $sql) 
-    {
-        $this->sql = $sql;
-        $result = $this->con->prepare($this->sql);
-        $result->execute();
-        $data = $result->fetch(PDO::FETCH_ASSOC);
-        return $data;
+    public function select(string $sql, array $params = [])
+{
+    $this->sql = $sql;
+    $result = $this->con->prepare($this->sql);
+
+    foreach ($params as $key => $value) {
+        $result->bindValue($key, $value);
     }
+
+    $result->execute();
+    $data = $result->fetch(PDO::FETCH_ASSOC);
+    
+    return $data;
+}
 
     public function selectAll(string $sql) 
     {

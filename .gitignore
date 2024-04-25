@@ -4,3 +4,4 @@ Views/index.php
 Views/Usuarios/index.php
 *.php
 Config/Config.php
+Assets/js/funciones.js

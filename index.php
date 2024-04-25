@@ -1,8 +1,8 @@
 <?php
     require_once "Config/Config.php";
-    $ruta = !empty($_GET['url']) ? $_GET['url'] : "Home/index";
+    $ruta = !empty($_GET['url']) ? $_GET['url'] : "Principal/index";
     $array = explode("/", $ruta); 
-    $controller = $array[0];
+    $controller = ucfirst($array[0]);
     $metodo = "index";
     $parametro = "";
     
@@ -29,10 +29,10 @@
         if (method_exists($controller,$metodo)){
             $controller->$metodo($parametro);
         }else{
-            echo "No existe el metodo";
+            header('Location: ' .base_url.'Errors');
         }
     }else{
-        echo "No existe el controlador";
+        header('Location: ' .base_url.'Errors');
     }
 
 ?>
